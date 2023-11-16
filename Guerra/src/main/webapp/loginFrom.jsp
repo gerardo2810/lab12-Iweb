@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="assets/logo_guerra.svg" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap Login Page</title>
+    <title>Era de Civilizaciones</title>
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
             rel="stylesheet"
