@@ -1,6 +1,6 @@
 package com.example.guerra.Beans;
 
-public class Personas {
+public class    Personas {
     private int idPersonas;
     private String nombre;
     private String genero;
