@@ -6,7 +6,6 @@ public class Jugadores {
     private int edad;
     private  String correo;
     private String usuario;
-    private String contraseña;
     private boolean edadLimite;
     private boolean pazGuerra;
 
@@ -40,14 +39,6 @@ public class Jugadores {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
     }
 
     public boolean isEdadLimite() {

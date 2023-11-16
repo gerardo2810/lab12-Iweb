@@ -7,7 +7,6 @@ public class HistorialGuerra {
     private Date fecha;
     private String resultado;
     private  String contrincante;
-    private String historialGuerrasCol;
     private Jugadores idJugador;
 
     public int getIdHistorialGuerras() {
