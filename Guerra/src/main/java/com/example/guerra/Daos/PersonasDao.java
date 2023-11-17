@@ -1,5 +1,6 @@
 package com.example.guerra.Daos;
 
+import com.example.guerra.Beans.Generos;
 import com.example.guerra.Beans.Jugadores;
 import com.example.guerra.Beans.Personas;
 
@@ -10,7 +11,7 @@ public class PersonasDao extends DaoBase{
     public ArrayList<Personas> listarPersonas(){
         ArrayList<Personas> listarPersonas = new ArrayList<>();
 
-        String sql = "" ;//query para listar jugadores
+        String sql = "SELECT * FROM personas p" ;//query para listar jugadores
         try (Connection conn = this.getConection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -46,7 +47,7 @@ public class PersonasDao extends DaoBase{
             try (ResultSet rs = pstmt.executeQuery()) {
 
                 if (rs.next()) {
-                    personas = new Jugadores();
+                    Jugadores personas = new Jugadores();
                     fetchPersonasData(personas, rs);
                 }
             }
@@ -97,6 +98,36 @@ public class PersonasDao extends DaoBase{
     }
 
 
+    private Personas fetchPersonasData(ResultSet rs) throws SQLException {
+        Personas persona = new Personas();
+        persona.setIdPersonas(rs.getInt(1));
+        persona.setNombre(rs.getString(2));
+        Generos genero = new Generos();
+        genero.setGeneroId(rs.getInt(3));
+        genero.setGeneroNombre(rs.getString("genero"));
+        persona.setConsumo(rs.getInt(4));
+        persona.setMoral(rs.getInt(5));
+        persona.setTiempoColonia(rs.getInt(6));
+        persona.setProduce(rs.getString(7));
 
 
+        return persona;
+    }
+
+    private void setPersonasParams(PreparedStatement pstmt,Personas persona) throws SQLException {
+        pstmt.setString(1, persona.getNombre());
+        pstmt.setInt(2, persona.getGenero().getGeneroId());
+        pstmt.setInt(3, persona.getConsumo());
+        pstmt.setInt(4, persona.getMoral());
+        pstmt.setInt(5, persona.getTiempoColonia());
+        pstmt.setInt(5, persona.getFuerza());
+        pstmt.setInt(6, persona.getProfesion().getProfesionid());
+        pstmt.setString(7, persona.getProduce());
+        pstmt.setString(8, persona.getPersonaColonia());
+        pstmt.setBoolean(6, persona.isMuereVive());
+
+
+
+
+    }
 }
