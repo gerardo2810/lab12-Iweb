@@ -11,7 +11,7 @@ public class PersonasDao extends DaoBase{
     public ArrayList<Personas> listarPersonas(){
         ArrayList<Personas> listarPersonas = new ArrayList<>();
 
-        String sql = "SELECT * FROM personas p" ;//query para listar jugadores
+        String sql = "SELECT * FROM personas p" ;
         try (Connection conn = this.getConection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {

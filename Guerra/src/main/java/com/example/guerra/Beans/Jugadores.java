@@ -9,6 +9,14 @@ public class Jugadores {
     private boolean edadLimite;
     private boolean pazGuerra;
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public int getIdJugador() {
         return idJugador;
     }
