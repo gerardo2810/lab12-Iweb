@@ -1,7 +1,7 @@
 <%@ page import="com.example.webapphr1_2023.Beans.Location" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:useBean type="java.util.ArrayList<com.example.webapphr1_2023.Beans.Location>" scope="request" id="locationList"/>
+<jsp:useBean type="java.util.ArrayList<com.example.guerra.Beans.Personas>" scope="request" id="personasList"/>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
 <body>
 <div class='container'>
 
-    <h1 class='mb-3'>Lista de Locations en hr</h1>
+    <h1 class='mb-3'>Lista de Personas</h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<%= request.getContextPath()%>">Home</a></li>
@@ -23,31 +23,34 @@
         Location</a>
     <table class="table">
         <tr>
-            <th>Loc ID</th>
-            <th>Street Address</th>
-            <th>Postal Code</th>
-            <th>City</th>
-            <th>State Province</th>
-            <th>Country id</th>
-            <th></th>
-            <th></th>
+            <th>ID</th>
+            <th>nombre</th>
+            <th>genero</th>
+            <th>Consumo alimento</th>
+            <th>Moral</th>
+            <th>Tiempo en la colonia</th>
+            <th>Fuerza</th>
+            <th>Produccion de alimento</th>
+
         </tr>
         <%
-            for (Location loc : locationList) {
+            for (Personas per : personasList) {
         %>
         <tr>
-            <td><%=loc.getLocationId()%>
+            <td><%=per.getIdPersonas()%>
             </td>
-            <td><%=loc.getStreetAddress()%>
+            <td><%=per.getNombre()%>
             </td>
-            <td><%=loc.getPostalCode()== null ? "Sin Codigo Postal" :loc.getPostalCode()%>
+            <td><%=per.getGenero()%>
             </td>
-            <td><%=loc.getCity()%>
+            <td><%=per.getConsumo()%>
             </td>
-            <td><%= loc.getStateProvince() == null ? "Sin Provincia" :loc.getStateProvince()%>
+            <td><%= per.getMoral()%>
             </td>
-            <td><%= loc.getCountry()== null ? "Sin Pais" :loc.getCountry().getCountryName()%>
+            <td><%= per.getTiempoColonia()%>
             </td>
+            <td><%= per.getProduce()%>
+
             <td>
                 <a class="btn btn-primary"
                    href="<%=request.getContextPath()%>/LocationServlet?action=editar&id=<%=loc.getLocationId()%>">
