@@ -10,7 +10,7 @@ public class PersonasDao extends DaoBase{
     public ArrayList<Personas> listarPersonas(){
         ArrayList<Personas> listarPersonas = new ArrayList<>();
 
-        String sql = "" //query para listar jugadores
+        String sql = "" ;//query para listar jugadores
         try (Connection conn = this.getConection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -90,6 +90,10 @@ public class PersonasDao extends DaoBase{
             pstmt.setInt(1, IdPersonas);
             pstmt.executeUpdate();
         }
+    catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+
     }
 
 
