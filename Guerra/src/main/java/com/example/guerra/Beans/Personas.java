@@ -3,18 +3,17 @@ package com.example.guerra.Beans;
 public class    Personas {
     private int idPersonas;
     private String nombre;
-    private String genero;
-    private String consumo;
-    private String moral;
+    private Generos genero;
+    private int consumo;
+    private int moral;
     private int tiempoColonia;
     private int fuerza;
-    private int alimentaXdia;
-    private String profesion;
+
+    private Profesiones profesion;
     private String produce;
     private String personaColonia;
     private boolean muereVive;
     private Jugadores idJugador;
-
 
     public int getIdPersonas() {
         return idPersonas;
@@ -32,27 +31,27 @@ public class    Personas {
         this.nombre = nombre;
     }
 
-    public String getGenero() {
+    public Generos getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Generos genero) {
         this.genero = genero;
     }
 
-    public String getConsumo() {
+    public int getConsumo() {
         return consumo;
     }
 
-    public void setConsumo(String consumo) {
+    public void setConsumo(int consumo) {
         this.consumo = consumo;
     }
 
-    public String getMoral() {
+    public int getMoral() {
         return moral;
     }
 
-    public void setMoral(String moral) {
+    public void setMoral(int moral) {
         this.moral = moral;
     }
 
@@ -72,19 +71,11 @@ public class    Personas {
         this.fuerza = fuerza;
     }
 
-    public int getAlimentaXdia() {
-        return alimentaXdia;
-    }
-
-    public void setAlimentaXdia(int alimentaXdia) {
-        this.alimentaXdia = alimentaXdia;
-    }
-
-    public String getProfesion() {
+    public Profesiones getProfesion() {
         return profesion;
     }
 
-    public void setProfesion(String profesion) {
+    public void setProfesion(Profesiones profesion) {
         this.profesion = profesion;
     }
 
@@ -119,4 +110,8 @@ public class    Personas {
     public void setIdJugador(Jugadores idJugador) {
         this.idJugador = idJugador;
     }
+
+
+
+
 }
