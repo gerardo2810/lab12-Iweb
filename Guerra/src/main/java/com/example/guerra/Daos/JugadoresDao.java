@@ -58,6 +58,35 @@ public class JugadoresDao extends DaoBase{
         return jugadores;
     }
 
+    public Jugadores obtenerJugador(String usuario) {
+
+        Jugadores jugadores = null;
+
+        String sql = "SELECT * FROM employees e \n"
+                + "left join jobs j ON (j.job_id = e.job_id) \n"
+                + "left join departments d ON (d.department_id = e.department_id)\n"
+                + "left  join employees m ON (e.manager_id = m.employee_id)\n"
+                + "WHERE e.email = ?"; //cambiar query para usuario
+
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, usuario);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+
+                if (rs.next()) {
+                    jugadores = new Jugadores();
+                    fetchJugadoresData(jugadores, rs);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return jugadores;
+    }
+
     public void actualizarJugadores(Jugadores jugadores) throws SQLException {
 
         String sql = "UPDATE employees SET first_name = ?, last_name = ?, email = ?, phone_number = ?, "

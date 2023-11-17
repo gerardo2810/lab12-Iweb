@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 
         if(jugadoresDao.validarUsuarioPasswordHashed(username,password)){
             System.out.println("usuario y password válidos");
-            Jugadores jugadores = jugadoresDao.obtenerJugadores(username);
+            Jugadores jugadores = jugadoresDao.obtenerJugador(username);
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("usuarioLogueado",jugadores);
             response.sendRedirect(request.getContextPath());
