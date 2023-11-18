@@ -17,18 +17,25 @@
     </jsp:include>
     <div class="row mb-5 mt-4">
         <div class="col-md-7">
-            <h1>Estadísticas</h1>
+            <h1>Leaderboard</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-4">
-            <h3>Cantidad de empleados por departamento</h3>
             <table class="table">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Departamento</th>
-                    <th>Cantidad empleados</th>
+                    <th>Ranking</th>
+                    <th>Jugador</th>
+                    <th>Días jugados en total</th>
+                    <th>Población</th>
+                    <th>Moral de la civilización</th>
+                    <th>Guerras ganadas</th>
+                    <th>% de victorias de guerras</th>
+                    <th>Fuerza de civilizacion</th>
+                    <th>Máximo número de días de un ciudadano</th>
+                    <th>Producción de alimento</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -45,33 +52,6 @@
                     </td>
                 </tr>
                 <% i++;  } %>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-4">
-            <h3>Cantidad de empleados por región</h3>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Región</th>
-                    <th>Cantidad empleados</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%
-                    int j = 1;
-                    for (EmpleadosPorRegionDto e : listaEmpPorRegion) {
-                %>
-                <tr>
-                    <td><%= j%>
-                    </td>
-                    <td><%= e.getRegion()%>
-                    </td>
-                    <td><%= e.getCantidad()%>
-                    </td>
-                </tr>
-                <% j++;  } %>
                 </tbody>
             </table>
         </div>

@@ -47,7 +47,7 @@ public class PersonasDao extends DaoBase{
             try (ResultSet rs = pstmt.executeQuery()) {
 
                 if (rs.next()) {
-                    Jugadores personas = new Jugadores();
+                    personas = new Personas();
                     fetchPersonasData(personas, rs);
                 }
             }
@@ -98,20 +98,19 @@ public class PersonasDao extends DaoBase{
     }
 
 
-    private Personas fetchPersonasData(ResultSet rs) throws SQLException {
-        Personas persona = new Personas();
-        persona.setIdPersonas(rs.getInt(1));
-        persona.setNombre(rs.getString(2));
+    private Personas fetchPersonasData(Personas personas, ResultSet rs) throws SQLException {
+        personas.setIdPersonas(rs.getInt(1));
+        personas.setNombre(rs.getString(2));
         Generos genero = new Generos();
         genero.setGeneroId(rs.getInt(3));
-        genero.setGeneroNombre(rs.getString("genero"));
-        persona.setConsumo(rs.getInt(4));
-        persona.setMoral(rs.getInt(5));
-        persona.setTiempoColonia(rs.getInt(6));
-        persona.setProduce(rs.getString(7));
+        genero.setGeneroNombre(rs.getInt("genero"));
+        personas.setConsumo(rs.getInt(4));
+        personas.setMoral(rs.getInt(5));
+        personas.setTiempoColonia(rs.getInt(6));
+        personas.setProduce(rs.getString(7));
 
 
-        return persona;
+        return personas;
     }
 
     private void setPersonasParams(PreparedStatement pstmt,Personas persona) throws SQLException {

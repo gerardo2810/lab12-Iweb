@@ -9,6 +9,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "PersonasServlet", value = "/PersonasServlet")
 public class PersonasServlet extends HttpServlet {
@@ -62,22 +63,29 @@ public class PersonasServlet extends HttpServlet {
             case "borrar":
                 if (request.getParameter("id") != null) {
                     String personasIdString = request.getParameter("id");
-                    int personaId = 0;
+                    int IdPersonas = 0;
                     try {
-                        personaId = Integer.parseInt(personasIdString);
+                        IdPersonas = Integer.parseInt(personasIdString);
                     } catch (NumberFormatException ex) {
                         response.sendRedirect("PersonasServlet");
                     }
 
-                    Personas per = personasDao.obtenerPersonas(personaId);
+                    Personas per = personasDao.obtenerPersonas(IdPersonas);
 
                     if (per != null) {
-                        personasDao.borrarPersonas(personaId);
+                        try {
+                            personasDao.borrarPersonas(IdPersonas);
+                            response.sendRedirect("PersonaServlet?msg=Persona borrado exitosamente");
+                        } catch (SQLException e) {
+                            response.sendRedirect("PersonaServlet?err=Error al borrar a la persona");
+                        }
                     }
+                } else {
+                    response.sendRedirect("PersonaServlet?err=Error al borrar a la persona");
                 }
-
-                response.sendRedirect("PersonasServlet");
                 break;
+            default:
+                response.sendRedirect("PersonaServlet");
         }
 
     }

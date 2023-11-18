@@ -20,8 +20,8 @@ public class GenerosDao extends DaoBase{
             while (rs.next()) {
                 Generos genero = new Generos();
 
-                genero.setGeneroId(rs.getString(1));
-                genero.setGeneroNombre(rs.getString(2));
+                genero.setGeneroId(rs.getInt(1));
+                genero.setGeneroNombre(rs.getInt(2));
 
 
                 listaGeneros.add(genero);

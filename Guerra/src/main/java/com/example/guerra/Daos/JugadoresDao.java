@@ -11,7 +11,7 @@ public class JugadoresDao extends DaoBase{
     public ArrayList<Jugadores> listarJugadores(){
         ArrayList<Jugadores> listarJugadores = new ArrayList<>();
 
-        String sql = "SELECT * FROM jugadores j" //query para listar jugadores
+        String sql = "SELECT * FROM jugadores j"; //query para listar jugadores
         try (Connection conn = this.getConection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -157,8 +157,7 @@ public class JugadoresDao extends DaoBase{
         return listaJugadores;
     }
 
-    private Jugadores fetchJugadoresData(ResultSet rs) throws SQLException {
-        Jugadores jugadores = new Jugadores();
+    private Jugadores fetchJugadoresData(Jugadores jugadores, ResultSet rs) throws SQLException {
         jugadores.setIdJugador(rs.getInt(1));
         jugadores.setNombre(rs.getString(2));
         jugadores.setEdad(rs.getInt(3));

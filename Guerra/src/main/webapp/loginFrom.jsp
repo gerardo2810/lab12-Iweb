@@ -28,6 +28,10 @@
     </div>
     <div class="text-center fs-1 fw-bold">Era de Civilizaciones</div>
     <div class="fs-6 fw-bold">Añadir breve descripción</div>
+    <% if (request.getAttribute("err") != null) {%>
+    <div class="alert alert-danger" role="alert"><%=request.getAttribute("err")%>
+    </div>
+    <% } %>
     <div class="input-group mt-4">
         <div class="input-group-text bg-info">
             <img
@@ -75,9 +79,7 @@
     </div>
     <div class="d-flex gap-1 justify-content-center mt-1">
         <div>¿No tienes tu cuenta?</div>
-        <a href="#" class="text-decoration-none text-info fw-semibold"
-        >Registrate</a
-        >
+        <a href="<%=request.getContextPath()%>/LoginServlet?action=registrojugador" class="text-decoration-none text-info fw-semibold">Registrate</a>
     </div>
     <div class="p-3">
         <div class="border-bottom text-center" style="height: 0.9rem">

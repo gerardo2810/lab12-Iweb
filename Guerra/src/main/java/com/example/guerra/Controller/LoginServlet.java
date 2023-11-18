@@ -12,18 +12,28 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession httpSession = request.getSession();
-        Jugadores jugadorLogged = (Jugadores) httpSession.getAttribute("usuarioLogueado");
+        response.setContentType("text/html");
 
-        if(jugadorLogged != null && jugadorLogged.getIdJugador() > 0){
+        String action = request.getParameter("action") == null ? "iniciosesion" : request.getParameter("action");
 
-            if(request.getParameter("a") != null){//logout
-                httpSession.invalidate();
-            }
-            response.sendRedirect(request.getContextPath());
-        }else{
-            request.getRequestDispatcher("loginFrom.jsp").forward(request, response);
+
+        switch (action){
+            case "iniciosesion":
+                request.getRequestDispatcher("loginFrom.jsp").forward(request,response);
+                break;
+            case "registrojugador":
+                request.getRequestDispatcher("RegistroJugador.jsp").forward(request,response);
+                break;
+            case "cerrarsesion":
+                HttpSession httpSession = request.getSession();
+                httpSession.invalidate(); //Lo que hace invalidate es borrar todos los atributos y la sesion la deja en blanco
+                request.getRequestDispatcher("loginFrom.jsp").forward(request,response);
+                response.sendRedirect(request.getContextPath() + "/LoginServlet");
+                break;
+
+
         }
+
     }
 
     @Override
